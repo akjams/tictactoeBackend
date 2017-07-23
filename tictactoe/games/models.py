@@ -14,9 +14,9 @@ class Game(models.Model):
     user_id_o = models.ForeignKey(User, on_delete=models.CASCADE, related_name="ogames")
 
     # TODO defualt=null here?
-    winner_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="wins")
-    turn_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="turns")
-    is_over = models.BinaryField()
+    winner_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="wins", blank=True, null=True)
+    turn_id = models.ForeignKey(User, on_delete=models.CASCADE, related_name="turns", blank=True, null=True)
+    is_over = models.BooleanField()
 
     def __str__(self):
         return ' '.join([self.user_id_x.__str__(), self.user_id_o.__str__(), self.state])
